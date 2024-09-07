@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Logo from "../../assets/Logo";
 import HamburgerMenu from "../../assets/HamburgerMenu";
+import Close from "../../assets/Close";
 
 const HeroSection = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,12 +31,12 @@ const HeroSection = () => {
             </button>
           </div>
           {/* mobile view */}
-          <button className="md:hidden" onClick={toggleMenu}>
-            <HamburgerMenu/>
+          <button className={`md:hidden transition-transform duration-500 ${isOpen ? 'rotate-180' : 'rotate-0'}`} onClick={toggleMenu}>
+            {isOpen ? <Close/> : <HamburgerMenu/>}
           </button>
         </div>
       </header>
-      <div className={`md:hidden absolute h-full w-full text-white p-4 bg-gray-900 z-50 transition-transform duration-500 ${isOpen? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`md:hidden fixed h-full w-full text-white p-4 bg-gray-900 z-50 transition-transform duration-500 ${isOpen? 'translate-x-0' : 'translate-x-full'}`}>
         <nav className="mx-1">
           <a href="#services" className="block rounded-lg py-3 px-2 hover:bg-gray-700">Services</a>
           <a href="#pricing" className="block rounded-lg py-3 px-2 hover:bg-gray-700">Pricing</a>
