@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Logo from "../../assets/Logo";
-  import HamburgerMenu from "../../assets/HamburgerMenu";
+import HamburgerMenu from "../../assets/HamburgerMenu";
 
 const HeroSection = () => {
   const [isOpen, setIsOpen] = useState(false);
