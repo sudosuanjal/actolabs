@@ -1,18 +1,35 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Logo from "../../assets/Logo";
 import HamburgerMenu from "../../assets/HamburgerMenu";
 import Close from "../../assets/Close";
 
 const HeroSection = () => {
+  const [showNavBar, setShowNavBar] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   const toggleMenu = () => setIsOpen(!isOpen);
+  const controllNavBar = () => {
+    if(window.scrollY > lastScrollY){
+      setShowNavBar(false);
+    }else{
+      setShowNavBar(true);  
+    }
+    setLastScrollY(window.scrollY);
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', controllNavBar);
+    return () => {
+      window.removeEventListener('scroll', controllNavBar);
+    };
+  }, [lastScrollY]);
   return (
     <>
-      <header className="border-b border-b-white h-16 flex items-center justify-center">
+      <header className={`${showNavBar ? "translate-y-0" : "-translate-y-full"} sticky top-0 z-50 backdrop-blur-xl backdrop-brightness-75 border-b border-b-white h-16 sm:h-20 flex items-center justify-center transition-transform duration-500 ${isOpen ? "translate-y-0" : ""}`}>
         <div className="h-12 flex items-center justify-between w-screen mx-6">
-          <div className="flex items-center h-full">
+          <div className="mt-1 flex items-center h-full">
             <Logo/>
-            <p className="ml-1 ">aoctolabs</p>
+            <p className="ml-1 h-full py-[10px]">aocto labs</p>
           </div>
           {/* desktop view */}
           <div className="hidden md:flex md:space-x-6 px-4 lg:space-x-10">
@@ -22,13 +39,9 @@ const HeroSection = () => {
             <a href="#client" className="hover:text-gray-400">Clients</a>
             <a href="#team" className="hover:text-gray-400">Team</a>
           </div>
-          <div className="hidden md:flex space-x-3 mr-3">
-            <button>
-              <a href="#login" className="hover:text-gray-400">Login</a>
-            </button>
-            <button className="border border-white h-9 px-2.5 rounded-3xl hover:text-gray-400">
-              <a href="#contact" className="">Contact Us</a>
-            </button>
+          <div className="hidden md:flex space-x-3 mr-3 items-center">
+            <a href="#login" className="hover:text-gray-400">Login</a>
+            <a href="#contact" className="border border-white h-10 px-2.5 rounded-3xl hover:text-gray-400 flex items-center inline-block text-center">Contact Us</a>
           </div>
           {/* mobile view */}
           <button className={`md:hidden transition-transform duration-500 ${isOpen ? 'rotate-180' : 'rotate-0'}`} onClick={toggleMenu}>
@@ -36,21 +49,25 @@ const HeroSection = () => {
           </button>
         </div>
       </header>
-      <div className={`md:hidden fixed h-full w-full text-white p-4 backdrop-blur-xl z-50 transition-transform duration-500 ${isOpen? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`md:hidden fixed h-full w-screen text-white p-4 backdrop-blur-xl backdrop-brightness-75 z-50 transition-transform duration-500 ${isOpen? 'translate-x-0' : 'translate-x-full'}`}>
         <nav className="mx-1">
-          <a href="#services" className="block rounded-lg py-3 px-2 hover:bg-gray-700">Services</a>
-          <a href="#pricing" className="block rounded-lg py-3 px-2 hover:bg-gray-700">Pricing</a>
-          <a href="#howItWorks" className="block rounded-lg py-3 px-2 hover:bg-gray-700">How it Works</a>
-          <a href="#client" className="block rounded-lg py-3 px-2 hover:bg-gray-700">Client</a>
-          <a href="#team" className="block rounded-lg py-3 px-2 hover:bg-gray-700">Team</a>
+          <a href="#services" className="block rounded-lg py-3 px-2 hover:bg-gray-900">Services</a>
+          <a href="#pricing" className="block rounded-lg py-3 px-2 hover:bg-gray-900">Pricing</a>
+          <a href="#howItWorks" className="block rounded-lg py-3 px-2 hover:bg-gray-900">How it Works</a>
+          <a href="#client" className="block rounded-lg py-3 px-2 hover:bg-gray-900">Client</a>
+          <a href="#team" className="block rounded-lg py-3 px-2 hover:bg-gray-900">Team</a>
         </nav>
+        <div className="md:hidden mx-1 mt-5">
+          <a href="#login" className="block py-3 px-2 hover:bg-gray-900">Login</a>
+          <a href="#contact" className="border border-white h-10 w-fit px-2.5 mt-2 hover:text-gray-400 flex items-center inline-block text-center block rounded-xl">Contact Us</a>
+        </div>
       </div>
-      <div className="mt-10 w-screen h-80 flex justify-center">
+      <div className="mt-10 w-full h-80 flex justify-center">
         <div className="w-4/5 flex flex-col items-center justify-center gap-4">
           <div className="w-full flex justify-center">
-            <h1 className="text-center text-3xl md:text-5xl flex jusify-center items-center font-bold">Just One Platform,<br/>More Digital Options</h1>
+            <h1 className="text-center text-3xl sm:text-5xl md:text-6xl flex jusify-center items-center font-bold">Just One Platform,<br/>More Digital Options</h1>
           </div>
-          <p className="hidden md:block">Navigating the digital landscape for success by Creating solutions for creative designings</p>
+          <p className="hidden md:block text-base text-[rgba(162,154,154,0.4)] px-10 text-center w-[500px]">Navigating the digital landscape for success by Creating solutions for creative designings</p>
           <button className="bg-[rgba(71,28,195,1)] w-36 h-12 mt-3 rounded-md font-semibold">Get on the call</button>
         </div>
       </div>
