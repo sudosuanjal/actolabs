@@ -26,7 +26,7 @@ const HeroSection = () => {
   }, [lastScrollY]);
   return (
     <>
-      <header id="top" className={`${showNavBar ? "translate-y-0" : "-translate-y-full"} sticky top-0 z-50 backdrop-blur-xl backdrop-brightness-75 border-b border-b-white h-16 sm:h-20 flex items-center justify-center transition-transform duration-500 ${isOpen ? "translate-y-0" : ""}`}>
+      <header className={`${showNavBar ? "translate-y-0" : "-translate-y-full"} sticky top-0 z-50 backdrop-blur-xl backdrop-brightness-75 border-b border-b-white h-16 sm:h-20 flex items-center justify-center transition-transform duration-500 ${isOpen ? "translate-y-0" : ""}`}>
         <div className="h-12 flex items-center justify-between w-screen mx-6">
           <div className="mt-1 flex items-center h-full">
             <Logo/>
