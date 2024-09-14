@@ -24,17 +24,35 @@ const HeroSection = () => {
       window.removeEventListener('scroll', controllNavBar);
     };
   }, [lastScrollY]);
+
+  const scrollToSection = (section) => {
+    setIsOpen(false);
+    if(section == "top"){
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+    }else{
+      document.getElementById(`${section}`).scrollIntoView({
+        behavior:"smooth"
+      })
+    }
+  };
+
   return (
     <>
       <header className={`${showNavBar ? "translate-y-0" : "-translate-y-full"} sticky top-0 z-50 backdrop-blur-xl backdrop-brightness-75 border-b border-b-white h-16 sm:h-20 flex items-center justify-center transition-transform duration-500 ${isOpen ? "translate-y-0" : ""}`}>
         <div className="h-12 flex items-center justify-between w-screen mx-6">
-          <div className="mt-1 flex items-center h-full">
+          <div onClick={()=>{scrollToSection('top')}} className="mt-1 flex items-center h-full cursor-pointer">
             <Logo/>
             <p className="ml-1 h-full py-[10px]">aocto labs</p>
           </div>
           {/* desktop view */}
           <div className="hidden md:flex md:space-x-6 px-4 lg:space-x-10">
-            <a href="#services" className="hover:text-gray-400">Services</a>
+            <a href="#services" onClick={(event)=>{
+              event.preventDefault();
+              scrollToSection('services');
+            }} className="hover:text-gray-400">Services</a>
             <a href="#pricing" className="hover:text-gray-400">Pricing</a>
             <a href="#howItWorks" className="hover:text-gray-400">How it Works</a>
             <a href="#client" className="hover:text-gray-400">Clients</a>
@@ -42,7 +60,7 @@ const HeroSection = () => {
           </div>
           <div className="hidden md:flex space-x-3 mr-3 items-center">
             <a href="#login" className="hover:text-gray-400">Login</a>
-            <a href="#contact" className="border border-white h-10 px-2.5 rounded-3xl hover:bg-white hover:text-black transition-colors flex items-center inline-block text-center">Contact Us</a>
+            <a href="#contact" onClick={()=>{scrollToSection('contact-us')}} className="border border-white h-10 px-2.5 rounded-3xl hover:bg-white hover:text-black transition-colors flex items-center inline-block text-center">Contact Us</a>
           </div>
           {/* mobile view */}
           <button className={`md:hidden transition-transform duration-500 ${isOpen ? 'rotate-180' : 'rotate-0'}`} onClick={toggleMenu}>
@@ -52,7 +70,10 @@ const HeroSection = () => {
       </header>
       <div className={`md:hidden fixed h-full w-screen text-white p-4 backdrop-blur-xl backdrop-brightness-75 z-50 transition-transform duration-500 ${isOpen? 'translate-x-0' : 'translate-x-full'}`}>
         <nav className="mx-1">
-          <a href="#services" className="block rounded-lg py-3 px-2 hover:bg-gray-900">Services</a>
+          <a href="#services" onClick={(event)=>{
+            event.preventDefault();
+            scrollToSection('services');
+          }} className="block rounded-lg py-3 px-2 hover:bg-gray-900">Services</a>
           <a href="#pricing" className="block rounded-lg py-3 px-2 hover:bg-gray-900">Pricing</a>
           <a href="#howItWorks" className="block rounded-lg py-3 px-2 hover:bg-gray-900">How it Works</a>
           <a href="#client" className="block rounded-lg py-3 px-2 hover:bg-gray-900">Client</a>
@@ -60,7 +81,7 @@ const HeroSection = () => {
         </nav>
         <div className="md:hidden mx-1 mt-5">
           <a href="#login" className="block py-3 px-2 hover:bg-gray-900">Login</a>
-          <a href="#contact" className="border border-white h-10 w-fit px-2.5 mt-2 hover:bg-white hover:text-black transition-colors flex items-center inline-block text-center block rounded-xl">Contact Us</a>
+          <a href="#contact" onClick={()=>{scrollToSection('contact-us')}} className="border border-white h-10 w-fit px-2.5 mt-2 hover:bg-white hover:text-black transition-colors flex items-center inline-block text-center block rounded-xl">Contact Us</a>
         </div>
       </div>
       <div className="w-full h-96 md:h-screen flex justify-center">

@@ -28,7 +28,7 @@ const DiscussSection = () => {
   };
 
   return (
-    <div className="bg-black min-h-screen flex flex-col items-center justify-center ">
+    <div id="contact-us" className="bg-black min-h-screen flex flex-col items-center justify-center ">
       {/* Heading */}
       <h3 className="text-white text-4xl mb-5 font-semibold text-center">
         Let's Discuss
