@@ -17,6 +17,7 @@ const HeroSection = () => {
     }
     setLastScrollY(window.scrollY);
   };
+
   useEffect(() => {
     window.addEventListener('scroll', controllNavBar);
     return () => {
@@ -41,7 +42,7 @@ const HeroSection = () => {
           </div>
           <div className="hidden md:flex space-x-3 mr-3 items-center">
             <a href="#login" className="hover:text-gray-400">Login</a>
-            <a href="#contact" className="border border-white h-10 px-2.5 rounded-3xl hover:text-gray-400 flex items-center inline-block text-center">Contact Us</a>
+            <a href="#contact" className="border border-white h-10 px-2.5 rounded-3xl hover:bg-white hover:text-black transition-colors flex items-center inline-block text-center">Contact Us</a>
           </div>
           {/* mobile view */}
           <button className={`md:hidden transition-transform duration-500 ${isOpen ? 'rotate-180' : 'rotate-0'}`} onClick={toggleMenu}>
@@ -59,16 +60,16 @@ const HeroSection = () => {
         </nav>
         <div className="md:hidden mx-1 mt-5">
           <a href="#login" className="block py-3 px-2 hover:bg-gray-900">Login</a>
-          <a href="#contact" className="border border-white h-10 w-fit px-2.5 mt-2 hover:text-gray-400 flex items-center inline-block text-center block rounded-xl">Contact Us</a>
+          <a href="#contact" className="border border-white h-10 w-fit px-2.5 mt-2 hover:bg-white hover:text-black transition-colors flex items-center inline-block text-center block rounded-xl">Contact Us</a>
         </div>
       </div>
-      <div className="mt-10 w-full h-80 flex justify-center">
-        <div className="w-4/5 flex flex-col items-center justify-center gap-4">
+      <div className="w-full h-96 md:h-screen flex justify-center">
+        <div className="w-screen flex flex-col items-center justify-center gap-y-4">
           <div className="w-full flex justify-center">
-            <h1 className="text-center text-3xl sm:text-5xl md:text-6xl flex jusify-center items-center font-bold">Just One Platform,<br/>More Digital Options</h1>
+            <h1 className="text-center text-4xl sm:text-6xl md:text-7xl lg:text-8xl flex jusify-center items-center font-bold">Just One Platform,<br/>More Digital Options</h1>
           </div>
-          <p className="hidden md:block text-base text-[rgba(162,154,154,0.4)] px-10 text-center w-[500px]">Navigating the digital landscape for success by Creating solutions for creative designings</p>
-          <button className="bg-[rgba(71,28,195,1)] w-36 h-12 mt-3 rounded-md font-semibold">Get on the call</button>
+          <p className="mt-2 hidden md:block text-base text-[rgba(162,154,154,0.4)] px-10 text-center w-[500px]">Navigating the digital landscape for success by Creating solutions for creative designings</p>
+          <button className="bg-[rgba(71,28,195,1)] w-36 h-12 mt-5 md:mt-3 rounded-3xl font-semibold">Get on the call</button>
         </div>
       </div>
     </>
