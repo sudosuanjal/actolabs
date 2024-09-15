@@ -4,7 +4,7 @@ import Card from "../ui/Card";
 
 const FeatureSection = () => {
   return (
-    <div className="relative bg-black text-white py-16 px-8 overflow-hidden">
+    <div id="services" className="relative bg-black text-white py-16 px-8 overflow-hidden">
       <div
         className="absolute inset-0"
         style={{
