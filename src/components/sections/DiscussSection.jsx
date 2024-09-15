@@ -28,7 +28,7 @@ const DiscussSection = () => {
   };
 
   return (
-    <div className="bg-black min-h-screen flex flex-col items-center justify-center ">
+    <div id="contact-us" className="bg-black min-h-screen flex flex-col items-center justify-center ">
       {/* Heading */}
       <h3 className="text-white text-4xl mb-5 font-semibold text-center">
         Let's Discuss
@@ -40,7 +40,7 @@ const DiscussSection = () => {
         {/* <div className="bg-blue-600 h-11/12 px-4 md:px-8 lg:px-12 py-8 md:py-12 lg:py-16 rounded-3xl shadow-lg border-0 md:border border-white-800"> */}
           <div className="flex flex-col md:flex-row h-full">
             {/* Left Side - Form */}
-            <div className="w-full md:w-1/2 p-6 px-20 py-16 flex flex-col justify-between ">
+            <div className="w-full md:w-1/2 px-8 py-16 flex flex-col justify-between ">
               <form onSubmit={onSubmit}>
                 <label htmlFor="name" className="block text-white mb-2">
                   Name
@@ -80,7 +80,7 @@ const DiscussSection = () => {
                 <button
                   type="submit"
                   aria-label="Send your message"
-                  className="w-1/2 mx-auto md:w-11/12 md:mx-0 p-5 mb-4 rounded-lg bg-[rgba(71,28,195,1)] text-white hover:bg-[rgba(71,28,195,0.8)] block"
+                  className="w-full mx-auto md:w-11/12 md:mx-0 p-5 mb-4 rounded-lg bg-[rgba(71,28,195,1)] text-white hover:bg-[rgba(71,28,195,0.8)] block"
                 >
                   Send Message
                 </button>
