@@ -19,7 +19,7 @@ export default function Footer() {
             <a href="/about" className="hover:underline">
               About us
             </a>
-            <a href="/services" className="hover:underline">
+            <a href="#services" className="hover:underline">
               Services
             </a>
             <a href="/use-cases" className="hover:underline">
@@ -50,7 +50,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <h2 className="text-purple-500 font-bold mb-4 px-2">Contact us:</h2>
+        <h2 className="text-[#471CC3] font-bold mb-4 px-2">Contact us:</h2>
         <div className="flex flex-col md:flex-row justify-between px-2">
           <div className="mb-8 md:mb-0 flex flex-col gap-4">
             <p>Email: info@aoctolabs.com</p>
@@ -67,7 +67,7 @@ export default function Footer() {
                 placeholder="Email"
                 className="w-full bg-gray-700 text-white p-3 rounded-md mb-4"
               />
-              <button className="w-full bg-purple-600 text-white py-3 px-6 rounded-md hover:bg-purple-700 transition duration-300">
+              <button className="w-full bg-[#471CC3] text-white py-3 px-6 rounded-md hover:bg-purple-700 transition duration-300">
                 Subscribe to newsletter
               </button>
             </div>
